@@ -248,13 +248,19 @@ position: absolute;
         flex-direction: column;
     }
     .card-image {
-        width: 180px;
-        height: 180px;
+        width: 40vw;
+        height: 40vw;
     }
     .greeting-card h2{
         font-size: 1.6rem;
     }
     .arabic-text{
         font-size: .9rem; 
+    }
+    .card-content .AID{
+        color: #ffa500;
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-align: center;
     }
 }
