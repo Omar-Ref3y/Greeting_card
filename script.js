@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Update card content
         const messageElement = document.querySelector('.arabic-text');
-        cardName.textContent = `من: ${name}`;
+        cardName.textContent =  `${name}`;
         form.style.display = 'none';
         cardPreview.style.display = 'block';
     });
@@ -111,7 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle creating new card
     newCardBtn.addEventListener('click', () => {
         form.reset();
-        imagePreview.innerHTML = '';
         cardImage.style.display = 'none';
         cardImage.src = '';
         form.style.display = 'block';

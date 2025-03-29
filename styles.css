@@ -158,8 +158,8 @@ position: absolute;
 
 .card-image {
     position: relative;
-    width: 180px;
-    height: 180px;
+    width: 60%;
+    height: 60%;
     margin: 0 auto 1.5rem;
     border-radius: 50%;
     padding: 8px;
@@ -176,7 +176,7 @@ position: absolute;
 
 .card-content h2 {
     color: #2c3e50;
-    margin: 2rem 0;
+    margin: 0rem 0;
     font-size: 2.5rem;
     font-family: 'Noto Kufi Arabic', 'Cairo', sans-serif;
     text-align: center;
@@ -246,5 +246,15 @@ position: absolute;
 
     .card-actions {
         flex-direction: column;
+    }
+    .greeting-card{
+        
+
+    }
+    .greeting-card h2{
+        font-size: 1.6rem;
+    }
+    .arabic-text{
+        font-size: .9rem; 
     }
 }
