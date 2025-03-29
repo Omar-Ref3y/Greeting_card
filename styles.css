@@ -248,8 +248,8 @@ position: absolute;
         flex-direction: column;
     }
     .card-image {
-        width: 40vw;
-        height: 40vw;
+        width: 35vw;
+        height: 35vw;
     }
     .greeting-card h2{
         font-size: 1.6rem;
