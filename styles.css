@@ -158,8 +158,8 @@ position: absolute;
 
 .card-image {
     position: relative;
-    width: 60%;
-    height: 60%;
+    width: 200px;
+    height: 200px;
     margin: 0 auto 1.5rem;
     border-radius: 50%;
     padding: 8px;
@@ -247,9 +247,9 @@ position: absolute;
     .card-actions {
         flex-direction: column;
     }
-    .greeting-card{
-        
-
+    .card-image {
+        width: 180px;
+        height: 180px;
     }
     .greeting-card h2{
         font-size: 1.6rem;
