@@ -233,7 +233,7 @@ position: absolute;
 
 
 
-@media (max-width: 600px) {
+@media (max-width: 510px) {
     .container {
         padding: 1rem;
     }
@@ -250,6 +250,8 @@ position: absolute;
     .card-image {
         width: 35vw;
         height: 35vw;
+        margin: 0 auto .2rem;
+        padding: 4px;
     }
     .greeting-card h2{
         font-size: 1.6rem;
@@ -263,4 +265,71 @@ position: absolute;
         font-weight: bold;
         text-align: center;
     }
+    .greeting-card .lanterns-left{
+        left: -40px;
+    }
+    .greeting-card .lanterns-right{
+        right: -40px;
+    }
+    .bottom{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        /* background: linear-gradient(45deg, #ffd700, #ffa500); */
+        width: 100%;
+        height: 300px;
+        z-index: 1;
+    }
+    .bottom img{
+        width: 100%;
+        height: 100%;
+        opacity: .1;
+    }
+
+}
+/* ======================================== */
+@media (max-width: 600px ),( min-width: 510px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .generate-btn,
+    .action-btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .card-actions {
+        flex-direction: column;
+    }
+    .card-image {
+        width: 35vw;
+        height: 35vw;
+        padding: 4px;
+        margin: 0 auto .2rem;
+    }
+    .greeting-card h2{
+        font-size: 2rem;
+    }
+    .arabic-text{
+        font-size: 1.2rem; 
+    }
+    .card-content .AID{
+        color: #ffa500;
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-align: center;
+    }
+    .greeting-card .lanterns-left{
+        left: -60px;
+    }
+    .greeting-card .lanterns-right{
+        right: -60px;
+    }
+    .bottom img{
+        width: 100%;
+        height: 100%;
+        opacity: .1;
+    }
+
 }
