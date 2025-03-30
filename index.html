@@ -24,15 +24,25 @@
                     <input type="file" id="image" accept="image/*">
                 </div>
 
+                <div class="form-group">
+                    <label>اختر تصميم البطاقة:</label>
+                    <div class="card-styles">
+                        <div class="card-style-option style-1 active" data-style="style-1"></div>
+                        <div class="card-style-option style-2" data-style="style-2"></div>
+                        <div class="card-style-option style-3" data-style="style-3"></div>
+                    </div>
+                </div>
+
                 <button type="submit" class="generate-btn">إنشاء البطاقة</button>
             </form>
         </div>
 
         <div class="card-preview" id="cardPreview" style="display: none;">
             <div class="greeting-card" id="greetingCard">
-                <img class="lanterns-left" src="assets/EID-Left.PNG" alt="">
-                <img class="lanterns-right" src="assets/EID-Right.png" alt="">
-                <img class="AID-img" src="assets/—Pngtree—eid mubarak with nice arabic_6260912.png" alt="">
+                <img class="lanterns-left" id="lanterns" src="assets/EID-Left.PNG" alt="">
+                <!-- <img id="top" src="assets/pngwing.com (1).png" alt=""> -->
+                <img class="lanterns-right" id="lanterns" src="assets/EID-Right.png" alt="">
+                <img class="AID-img" id="AID-img" src="" alt="">
                 <div class="card-image">
                     <img id="cardImage" src="" alt="" style="display: none;">
                 </div>
@@ -44,8 +54,12 @@
 أعاده الله علينا باليمن والبركات</p>
                 </div>
                 <div class="bottom">
-                    <img src="/assets/pngegg.png" alt="">
+                    <img id="bottom" src="/assets/pngegg.png" alt="">
                 </div>
+                <div class="background" id="backgroundDiv">
+                    <img id="background" src="assets/pngegg (1).png" alt="">
+                </div>
+
             </div>
 
             <div class="card-actions">
@@ -56,6 +70,7 @@
         </div>
     </div>
 
+    <script src="confetti.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
