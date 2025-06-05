@@ -57,50 +57,104 @@ document.addEventListener('DOMContentLoaded', () => {
             // Add active class to selected option
             option.classList.add('active');
             // Update card style
-            if(option.classList.contains('style-1')){
-                EidImg.src = 'assets/—Pngtree—eid mubarak with nice arabic_6260912.png';
-                option.style.display = 'block';
-                bottomImg.style.display = 'block';
-                pattern.style.display = 'block';
-
-                // topImg.style.display = 'none';
-            }
-            else if(option.classList.contains('style-2')){
-                EidImg.src = 'assets/style-2.png';
-                // topImg.style.display = 'block';
-                bottomImg.src = 'assets/pngwing.com (1).png';
-                pattern.style.display = 'none';
-
-            }
-            else{
-                EidImg.src = 'assets/style-2.png';
-                pattern.src = 'assets/pngegg(2).png';
-                pattern.style.display = 'block';
-
-            }
             const selectedStyle = option.getAttribute('data-style');
             greetingCard.className = `greeting-card ${selectedStyle}`;
+            const aidSpan = document.querySelector('.greeting-card .AID');
+
+            if(selectedStyle === 'style-1'){
+                EidImg.src = 'assets/—Pngtree—eid mubarak with nice arabic_6260912.png';
+                bottomImg.src = '/assets/pngegg.png'; 
+                pattern.src = 'assets/pngegg (1).png';
+                bottomImg.style.display = 'block';
+                pattern.style.display = 'block';
+                if (aidSpan) aidSpan.textContent = 'عيد الفطر المبارك';
+            }
+            else if(selectedStyle === 'style-2'){
+                EidImg.src = 'assets/style-2.png';
+                bottomImg.src = 'assets/pngwing.com (1).png';
+                pattern.style.display = 'none';
+                if (aidSpan) aidSpan.textContent = 'عيد الفطر المبارك';
+            }
+            else if(selectedStyle === 'style-3'){
+                EidImg.src = 'assets/style-2.png'; // Assuming style-2.png is generic enough or placeholder
+                pattern.src = 'assets/pngegg(2).png';
+                bottomImg.src = '/assets/pngegg.png'; // Default bottom image
+                pattern.style.display = 'block';
+                bottomImg.style.display = 'block';
+                if (aidSpan) aidSpan.textContent = 'عيد الفطر المبارك';
+            }
+            // Eid al-Adha styles
+            else if(selectedStyle === 'style-4'){
+                EidImg.src = 'assets/eid_adha_1.png'; // Placeholder for Eid al-Adha image 1
+                bottomImg.src = 'assets/eid_adha_bottom_1.png'; // Placeholder
+                pattern.src = 'assets/eid_adha_pattern_1.png'; // Placeholder
+                bottomImg.style.display = 'block';
+                pattern.style.display = 'block';
+                if (aidSpan) aidSpan.textContent = 'عيد الأضحى المبارك';
+            }
+            else if(selectedStyle === 'style-5'){
+                EidImg.src = 'assets/eid_adha_2.png'; // Placeholder for Eid al-Adha image 2
+                bottomImg.src = 'assets/eid_adha_bottom_2.png'; // Placeholder
+                pattern.style.display = 'none'; // Example: no pattern for this style
+                if (aidSpan) aidSpan.textContent = 'عيد الأضحى المبارك';
+            }
+            else if(selectedStyle === 'style-6'){
+                EidImg.src = 'assets/eid_adha_3.png'; // Placeholder for Eid al-Adha image 3
+                bottomImg.src = 'assets/eid_adha_bottom_3.png'; // Placeholder
+                pattern.src = 'assets/eid_adha_pattern_3.png'; // Placeholder
+                bottomImg.style.display = 'block';
+                pattern.style.display = 'block';
+                if (aidSpan) aidSpan.textContent = 'عيد الأضحى المبارك';
+            }
         });
     });
 
     // Handle form submission
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const name = document.getElementById('name').value;
-        // Get selected style
-        const selectedStyle = document.querySelector('.card-style-option.active').getAttribute('data-style');
+        const selectedStyleOption = document.querySelector('.card-style-option.active');
+        const selectedStyle = selectedStyleOption ? selectedStyleOption.getAttribute('data-style') : 'style-1';
+        const isEidAdha = ['style-4', 'style-5', 'style-6'].includes(selectedStyle);
+        const hasImage = !!imageInput.files.length;
 
-        // Set default image if no image is uploaded
-        if (!imageInput.files.length) {
-            cardImage.src = 'assets/Helal.png';
-            cardImage.style.display = 'block';
+        // Prepare data to send to Google Sheets
+        const formData = {
+            name: name,
+            card_type: isEidAdha ? 'عيد الأضحى' : 'عيد الفطر',
+            style: selectedStyle,
+            has_image: hasImage ? 'نعم' : 'لا'
+        };
+
+        try {
+            // Send data to Google Sheets
+            await fetch('https://script.google.com/macros/s/AKfycbxTyvDkZcSjKDjyi9Qh4XrZtoazSOVWQAr2Yr0tnQgyjmTvX1uO_yY9PXI92HEyLA1wQg/exec', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+
+            // Update card content
+            if (!imageInput.files.length) {
+                cardImage.src = 'assets/Helal.png';
+                cardImage.style.display = 'block';
+            }
+
+            const messageElement = document.querySelector('.arabic-text');
+            const aidSpan = messageElement.querySelector('.AID');
+            if (aidSpan) aidSpan.textContent = isEidAdha ? 'عيد الأضحى المبارك' : 'عيد الفطر المبارك';
+            cardName.textContent = name;
+            form.style.display = 'none';
+            cardPreview.style.display = 'block';
+
+            // Show success message
+            alert('تم تسجيل المعلومات بنجاح في قاعدة البيانات');
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            alert('حدث خطأ أثناء تسجيل المعلومات. يرجى المحاولة مرة أخرى');
         }
-
-        // Update card content
-        const messageElement = document.querySelector('.arabic-text');
-        cardName.textContent =  `${name}`;
-        form.style.display = 'none';
-        cardPreview.style.display = 'block';
     });
 
     // Function to start confetti animation with enhanced speed and density

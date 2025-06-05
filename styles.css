@@ -42,24 +42,53 @@ label {
 }
 
 input[type="text"],
+input[type="file"],
 textarea {
     width: 100%;
-    padding: 0.8rem;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
+    padding: 0.9rem;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
     font-size: 1rem;
-    transition: border-color 0.3s;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    margin-bottom: 0.5rem; /* Add some default spacing below inputs */
 }
 
 input[type="text"]:focus,
+input[type="file"]:focus,
 textarea:focus {
-    border-color: #3498db;
-    outline: none;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
+/* Specific style for textarea height */
 textarea {
-    height: 120px;
+    height: 120px; 
     resize: vertical;
+}
+
+/* Style for file input button appearance */
+input[type="file"] {
+    padding: 0; /* Remove padding from the wrapper, style the button part */
+}
+
+input[type="file"]::file-selector-button {
+    padding: 0.9rem 1.2rem; /* Match padding of other inputs */
+    margin-inline-end: 1rem; /* Use logical property for RTL */
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: .25rem; /* Consistent border-radius */
+    color: #495057;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: #d3d9df;
+    border-color: #b8c0c7;
 }
 
 .image-preview {
@@ -82,20 +111,53 @@ textarea {
 
 .generate-btn,
 .action-btn {
-    background: #3498db;
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 8px;
+    display: inline-block; 
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
     cursor: pointer;
+    user-select: none;
+    background-color: #007bff; 
+    border: 1px solid #007bff;
+    padding: 0.75rem 1.5rem; 
     font-size: 1rem;
-    font-weight: bold;
-    transition: background 0.3s;
+    line-height: 1.5;
+    border-radius: 0.3rem; 
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, transform 0.1s ease-out;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 .generate-btn:hover,
 .action-btn:hover {
-    background: #2980b9;
+    color: #fff;
+    background-color: #0069d9;
+    border-color: #0062cc;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.generate-btn:focus,
+.action-btn:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5); 
+}
+
+.generate-btn:active,
+.action-btn:active {
+    color: #fff;
+    background-color: #0062cc;
+    border-color: #005cbf;
+    transform: translateY(0px);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Ensure buttons in card-actions also get some spacing if wrapped */
+.card-actions .action-btn {
+    margin-bottom: 0.5rem; /* Add margin for wrapped buttons */
 }
 
 .card-preview {
@@ -109,6 +171,17 @@ textarea {
     justify-content: center;
     margin-bottom: 1.5rem;
     flex-wrap: wrap;
+}
+
+.card-type-heading {
+    width: 100%;
+    text-align: center;
+    margin: 1.5rem 0 0.5rem;
+    color: #2c3e50;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.5rem;
 }
 
 .card-style-option {
@@ -144,6 +217,18 @@ textarea {
     background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
 }
 
+.style-4 {
+    background: linear-gradient(135deg, #006400 0%, #228B22 100%);
+}
+
+.style-5 {
+    background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+}
+
+.style-6 {
+    background: linear-gradient(135deg, #B8860B 0%, #FFD700 100%);
+}
+
 .greeting-card.style-2 {
     background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
     color: white;
@@ -170,6 +255,48 @@ textarea {
 
 .greeting-card.style-3 .card-content .AID {
     color: #ffd700;
+}
+
+.greeting-card.style-4 {
+    background: linear-gradient(135deg, #006400 0%, #228B22 100%);
+    color: white;
+}
+
+.greeting-card.style-4 .card-content h2,
+.greeting-card.style-4 .arabic-text {
+    color: white;
+}
+
+.greeting-card.style-4 .card-content .AID {
+    color: #FFD700;
+}
+
+.greeting-card.style-5 {
+    background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+    color: white;
+}
+
+.greeting-card.style-5 .card-content h2,
+.greeting-card.style-5 .arabic-text {
+    color: white;
+}
+
+.greeting-card.style-5 .card-content .AID {
+    color: #FFFACD;
+}
+
+.greeting-card.style-6 {
+    background: linear-gradient(135deg, #B8860B 0%, #DAA520 100%);
+    color: #333;
+}
+
+.greeting-card.style-6 .card-content h2,
+.greeting-card.style-6 .arabic-text {
+    color: #333;
+}
+
+.greeting-card.style-6 .card-content .AID {
+    color: #8B4513;
 }
 
 .greeting-card {
