@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // Send data to Google Sheets
-            await fetch('https://script.google.com/macros/s/AKfycbxTyvDkZcSjKDjyi9Qh4XrZtoazSOVWQAr2Yr0tnQgyjmTvX1uO_yY9PXI92HEyLA1wQg/exec', {
+            await fetch('https://script.google.com/macros/s/AKfycbyXORx_8t0nMF8SbDKd1A_mmWyEWWvZ8Wb23FV-oQcRAuL2dMWLQAbImYbHuLdM735CAA/exec', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
